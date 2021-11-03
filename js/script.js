@@ -18,12 +18,6 @@ La partita termina quando il giocatore clicca su una bomba o raggiunge il numero
 Al termine della partita il software deve scoprire tutte le bombe e comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
 */
 
-// creo la variabile per il numero di celle per riga
-let rowCells = '';
-
-// creo la variabile per il numero di celle totali
-let totCells = rowCells * rowCells;
-
 // intercetto il bottone Play
 const playButton = document.querySelector('.btn');
 
@@ -61,18 +55,23 @@ function playGame(){
 
   console.log('difficoltà scelta', difficulty);
 
+  // creo la variabile per il numero di celle per riga
+  let rowCells = parseInt();
 
+  // creo la variabile per il numero di celle totali
+  let totCells = rowCells * rowCells;
 
   // creo la funzione per generare la griglia easy
   function generateEasyGrid(tot){
 
     rowCells = 10;
+    totCells = 100;
 
     const grid = document.createElement('div');
     grid.className = 'grid';
     mainContent.append(grid);
 
-    for(let i = 0; i < 100; i++){
+    for(let i = 0; i < totCells; i++){
       
       const squareComplete = createSquare(grid);
 
@@ -92,12 +91,13 @@ function playGame(){
   function generateHardGrid(tot){
 
     rowCells = 9;
+    totCells = 81;
 
     const grid = document.createElement('div');
     grid.className = 'grid';
     mainContent.append(grid);
 
-    for(let i = 0; i < 81; i++){
+    for(let i = 0; i < totCells; i++){
       
       const squareComplete = createSquare(grid);
 
@@ -117,12 +117,13 @@ function playGame(){
   function generateCrazyGrid(tot){
 
     rowCells = 7;
+    totCells = 49;
 
     const grid = document.createElement('div');
     grid.className = 'grid';
     mainContent.append(grid);
 
-    for(let i = 0; i < 49; i++){
+    for(let i = 0; i < totCells; i++){
       
       const squareComplete = createSquare(grid);
 
@@ -163,18 +164,17 @@ function playGame(){
   }
 
 
+  // creo la costante totale delle bombe che è uguale a 16
+  const totBombs = 16;
 
-
-
-
-  // genero la funzione che crea le 16 bombe
+  // genero la funzione che crea le bombe
   function generateBombs(){
 
     // creo un array vuoto dove andranno messe le "bombe"
     const bombs = [];
     console.log(bombs);
 
-    while(bombs.lenght < 16){
+    while(bombs.lenght < totBombs){
       // creo la costante "bomb" richiamando la funzione che genera un numero random in base al numero totale di celle
       const bomb = generateRandomNum(1, totCells);
 
@@ -183,7 +183,7 @@ function playGame(){
       }
       
       if(!bombs.includes(bomb)){  
-        // aggiungo la bomba creata all'array vuoto per le bombe
+        // aggiungo la bomba creata all'array vuoto se non è presente
         bombs.push(bomb);
       }
     }
