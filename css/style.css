@@ -1,0 +1,113 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container{
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* HEADER */
+
+header{
+  width: 100vw;
+  height: 100px;
+  background-color: white;
+  
+}
+
+.header-content{
+  display: flex;
+  flex-direction: row;
+}
+
+.header-left, .header-right{
+  width: 50%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-left{
+  justify-content: start;
+}
+
+#logo{
+  width: 50px;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+
+.header-left h1{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.header-right{
+  justify-content: end;
+}
+
+.header-right select{
+  width: 120px;
+  margin: 0 10px;
+}
+
+.header-right .btn{
+  width: 100px;
+}
+
+/* MAIN */
+
+main{
+  height: calc(100vh - 100px - 50px);
+  background-color: #76FFCB;
+}
+
+.main-content{
+  height: calc(100vh - 100px - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-pre-game{
+  height: calc(100vh - 100px - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid{
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.square{
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FOOTER */
+
+footer{
+  width: 100vw;
+  height: 50px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+footer a{
+  color: blue;
+}
