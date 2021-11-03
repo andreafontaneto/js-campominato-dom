@@ -55,32 +55,6 @@ function playGame(){
 
   console.log('difficoltà scelta', difficulty);
 
-  generateBombs();
-
-  // genero la funzione che crea le 16 bombe
-  function generateBomb(){
-
-    // creo un array vuoto dove andranno messe le "bombe"
-    const bombs = [];
-    console.log(bombs);
-
-    while(bombs.lenght < 16){
-      // creo la costante "bomb" richiamando la funzione che genera un numero random in base al numero totale di celle
-      const bomb = generateRandomNum(1, 100);
-
-      function generateRandNum(min, max){
-        return Math.floor(Math.random() * (max - min + 1) + min);
-      }
-      
-      if(!bombs.includes(bomb)){  
-        // aggiungo la bomba creata all'array vuoto per le bombe
-        bombs.push(bomb);
-      }
-    }
-
-    return bombs;
-  }
-
   // creo la funzione per generare la griglia easy
   function generateEasyGrid(tot){
 
@@ -98,6 +72,8 @@ function playGame(){
       squareComplete.style.height = 'calc(100% / 10)';
 
     }
+
+    generateBombs();
 
     return grid;
   }
@@ -120,6 +96,8 @@ function playGame(){
 
     }
 
+    generateBombs();
+
     return grid;
   }
 
@@ -140,6 +118,8 @@ function playGame(){
       squareComplete.style.height = 'calc(100% / 7)';
 
     }
+
+    generateBombs();
 
     return grid;
   }
@@ -162,6 +142,31 @@ function playGame(){
     return square;
 
   }
+
+  // genero la funzione che crea le 16 bombe
+  function generateBombs(){
+
+    // creo un array vuoto dove andranno messe le "bombe"
+    const bombs = [];
+    console.log(bombs);
+
+    while(bombs.lenght < 16){
+      // creo la costante "bomb" richiamando la funzione che genera un numero random in base al numero totale di celle
+      const bomb = generateRandomNum(1, 100);
+
+      function generateRandNum(min, max){
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+      
+      if(!bombs.includes(bomb)){  
+        // aggiungo la bomba creata all'array vuoto per le bombe
+        bombs.push(bomb);
+      }
+    }
+
+    return bombs;
+  }
+
 
 }
 
