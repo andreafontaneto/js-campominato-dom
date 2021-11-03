@@ -26,6 +26,14 @@ playButton.addEventListener('click', function(){
   playGame();
 })
 
+// creo la variabile per il numero di celle per riga
+let rowCells = parseInt();
+
+// creo la variabile per il numero di celle totali
+let totCells = rowCells * rowCells;
+
+// creo la costante totale delle bombe che è uguale a 16
+const totBombs = 16;
 
 
 // metto tutto in una funziona unica che fa partire il gioco
@@ -55,11 +63,7 @@ function playGame(){
 
   console.log('difficoltà scelta', difficulty);
 
-  // creo la variabile per il numero di celle per riga
-  let rowCells = parseInt();
 
-  // creo la variabile per il numero di celle totali
-  let totCells = rowCells * rowCells;
 
   // creo la funzione per generare la griglia easy
   function generateEasyGrid(tot){
@@ -82,8 +86,8 @@ function playGame(){
 
     }
 
-    generateBombs();
-
+    let bombs = generateBombs();
+    console.log('lista bombe', bombs);
     return grid;
   }
 
@@ -108,8 +112,8 @@ function playGame(){
 
     }
 
-    generateBombs();
-
+    let bombs = generateBombs();
+    console.log('lista bombe', bombs);
     return grid;
   }
 
@@ -134,8 +138,8 @@ function playGame(){
 
     }
 
-    generateBombs();
-
+    let bombs = generateBombs();
+    console.log('lista bombe', bombs);
     return grid;
   }
 
@@ -164,21 +168,20 @@ function playGame(){
   }
 
 
-  // creo la costante totale delle bombe che è uguale a 16
-  const totBombs = 16;
+
 
   // genero la funzione che crea le bombe
   function generateBombs(){
 
     // creo un array vuoto dove andranno messe le "bombe"
     const bombs = [];
-    console.log(bombs);
 
-    while(bombs.lenght < totBombs){
+    while(bombs.length < totBombs){
+
       // creo la costante "bomb" richiamando la funzione che genera un numero random in base al numero totale di celle
       const bomb = generateRandomNum(1, totCells);
 
-      function generateRandNum(min, max){
+      function generateRandomNum(min, max){
         return Math.floor(Math.random() * (max - min + 1) + min);
       }
       
