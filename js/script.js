@@ -21,10 +21,12 @@ Al termine della partita il software deve scoprire tutte le bombe e comunicare i
 // intercetto il bottone Play
 const playButton = document.querySelector('.btn');
 
+// al click del bottone play viene richiatama la funzione playGame
 playButton.addEventListener('click', function(){
   playGame();
 })
 
+// metto tutto in una funziona unica che fa partire il gioco
 function playGame(){
   // intercetto il div con classe main-content
   const mainContent = document.querySelector('.main-content');
@@ -122,10 +124,17 @@ function playGame(){
 
     square.className = 'square';
 
+    square.addEventListener('click', function(){
+    
+      square.classList.add('clicked');
+      
+    })
+
     target.append(square);
 
     return square;
 
   }
-  }
+
+}
 
