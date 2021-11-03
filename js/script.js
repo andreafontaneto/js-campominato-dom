@@ -26,6 +26,8 @@ playButton.addEventListener('click', function(){
   playGame();
 })
 
+
+
 // metto tutto in una funziona unica che fa partire il gioco
 function playGame(){
   // intercetto il div con classe main-content
@@ -51,8 +53,33 @@ function playGame(){
       break;
   }
 
-  console.log(difficulty);
+  console.log('difficoltà scelta', difficulty);
 
+  generateBombs();
+
+  // genero la funzione che crea le 16 bombe
+  function generateBomb(){
+
+    // creo un array vuoto dove andranno messe le "bombe"
+    const bombs = [];
+    console.log(bombs);
+
+    while(bombs.lenght < 16){
+      // creo la costante "bomb" richiamando la funzione che genera un numero random in base al numero totale di celle
+      const bomb = generateRandomNum(1, 100);
+
+      function generateRandNum(min, max){
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+      
+      if(!bombs.includes(bomb)){  
+        // aggiungo la bomba creata all'array vuoto per le bombe
+        bombs.push(bomb);
+      }
+    }
+
+    return bombs;
+  }
 
   // creo la funzione per generare la griglia easy
   function generateEasyGrid(tot){
