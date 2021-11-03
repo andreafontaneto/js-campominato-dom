@@ -18,6 +18,12 @@ La partita termina quando il giocatore clicca su una bomba o raggiunge il numero
 Al termine della partita il software deve scoprire tutte le bombe e comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
 */
 
+// creo la variabile per il numero di celle per riga
+let rowCells = '';
+
+// creo la variabile per il numero di celle totali
+let totCells = rowCells * rowCells;
+
 // intercetto il bottone Play
 const playButton = document.querySelector('.btn');
 
@@ -55,8 +61,12 @@ function playGame(){
 
   console.log('difficoltà scelta', difficulty);
 
+
+
   // creo la funzione per generare la griglia easy
   function generateEasyGrid(tot){
+
+    rowCells = 10;
 
     const grid = document.createElement('div');
     grid.className = 'grid';
@@ -68,8 +78,8 @@ function playGame(){
 
       squareComplete.innerHTML = i + 1;
 
-      squareComplete.style.width = 'calc(100% / 10)';
-      squareComplete.style.height = 'calc(100% / 10)';
+      squareComplete.style.width = `calc(100% / ${rowCells})`;
+      squareComplete.style.height = `calc(100% / ${rowCells})`;
 
     }
 
@@ -81,6 +91,8 @@ function playGame(){
   // creo la funzione per generare la griglia hard
   function generateHardGrid(tot){
 
+    rowCells = 9;
+
     const grid = document.createElement('div');
     grid.className = 'grid';
     mainContent.append(grid);
@@ -91,8 +103,8 @@ function playGame(){
 
       squareComplete.innerHTML = i + 1;
 
-      squareComplete.style.width = 'calc(100% / 9)';
-      squareComplete.style.height = 'calc(100% / 9)';
+      squareComplete.style.width = `calc(100% / ${rowCells})`;
+      squareComplete.style.height = `calc(100% / ${rowCells})`;
 
     }
 
@@ -104,6 +116,8 @@ function playGame(){
   // creo la funzione per generare la griglia crazy
   function generateCrazyGrid(tot){
 
+    rowCells = 7;
+
     const grid = document.createElement('div');
     grid.className = 'grid';
     mainContent.append(grid);
@@ -114,8 +128,8 @@ function playGame(){
 
       squareComplete.innerHTML = i + 1;
 
-      squareComplete.style.width = 'calc(100% / 7)';
-      squareComplete.style.height = 'calc(100% / 7)';
+      squareComplete.style.width = `calc(100% / ${rowCells})`;
+      squareComplete.style.height = `calc(100% / ${rowCells})`;
 
     }
 
@@ -123,6 +137,11 @@ function playGame(){
 
     return grid;
   }
+
+
+
+
+
 
   // creo la funzione generale per creare un singolo quadrato
   function createSquare (target){
@@ -143,6 +162,11 @@ function playGame(){
 
   }
 
+
+
+
+
+
   // genero la funzione che crea le 16 bombe
   function generateBombs(){
 
@@ -152,7 +176,7 @@ function playGame(){
 
     while(bombs.lenght < 16){
       // creo la costante "bomb" richiamando la funzione che genera un numero random in base al numero totale di celle
-      const bomb = generateRandomNum(1, 100);
+      const bomb = generateRandomNum(1, totCells);
 
       function generateRandNum(min, max){
         return Math.floor(Math.random() * (max - min + 1) + min);
